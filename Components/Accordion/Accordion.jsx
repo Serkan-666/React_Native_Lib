@@ -12,7 +12,6 @@ const Accordion = ({ children, expanded, setExpanded }) => {
         duration: 300,
         useNativeDriver: false,
       }).start();
-      
     } else {
       Animated.timing(animationValue, {
         toValue: 1,
@@ -31,6 +30,7 @@ const Accordion = ({ children, expanded, setExpanded }) => {
       style={[
         {
           overflow: "hidden",
+          position: "relative",
           height: animationValue.interpolate({
             inputRange: [0, 1],
             outputRange: [0, contentHeight],
@@ -41,6 +41,9 @@ const Accordion = ({ children, expanded, setExpanded }) => {
       <View
         style={{
           position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
         }}
         onLayout={(event) => {
           if (contentHeight === 0) {
